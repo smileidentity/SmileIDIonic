@@ -1,0 +1,15 @@
+{
+  "name": "smileidionic",
+  "version": "1.0.0",
+  "description": "Official Smile Identity Ionic library ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "smile",
+    "identity"
+  ],
+  "author": "Smile Identity",
+  "license": "ISC"
+}

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-smileid" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SmileIDIonic</name>
+    <engines>
+        <engine name="cordova" version=">=7.1.0"/>
+        <engine name="cordova-android" version=">=6.3.0"/>
+    </engines>
+    <js-module name="SmileIDIonic" src="www/SmileIDIonic.js">
+        <clobbers target="SmileIDIonic"/>
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SmileIDIonic">
+                <param name="android-package" value="cordova.plugin.smileid.SmileIDIonic"/>
+            </feature>
+        </config-file>
+        <!-- <config-file parent="/*" target="AndroidManifest.xml"/> -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-permission android:name="android.permission.FLASHLIGHT"/>
+            <uses-feature android:name="android.hardware.camera" android:required="true"/>
+
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="android.support.VERSION" android:value="26.1.0" />
+            <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+            <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="face" />
+            <activity android:name="cordova.plugin.smileid.SIDSelfieActivity" android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden" android:exported="false"/>
+            <activity android:name="cordova.plugin.smileid.SIDIDCardActivity" android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden" android:exported="false"/>
+        </config-file>
+
+        <framework src="src/android/smile.gradle" custom="true" type="gradleReference"/>
+        <!-- <lib-file src="src/android/smile_detect_library-release.aar"/> -->
+        <!-- <resource-file src="src/android/smile_detect_library-release.aar" target="libs/smile_detect_library-release.aar" /> -->
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="default_toast_face_in_oval">Put your face inside the oval</string>
+        </config-file> 
+         <config-file target="res/values/colors.xml" parent="/*">
+            <!--Arc Color-->
+            <color name="arc_color">#0ea5de</color>
+            <color name="arc_color_trans_80per">#cc0ea5de</color>
+            <color name="arc_color_trans_60per">#990ea5de</color>
+
+            <color name="arc_color_80">#0ea5de</color>
+            <color name="arc_color_60">#00B7FC</color>
+
+            <!--Overlay Color-->
+            <color name="white_color">#ffffff</color>
+            <!--Flash Screen color-->
+            <color name="white_color_trans_90per">#E9ffffff</color>
+            <color name="white_color_trans_80per">#ccffffff</color>
+            <color name="white_color_trans_50per">#77ffffff</color>
+            <color name="app_green">#17DC89</color>
+
+
+            <color name="colorMainNavyTint">#cc394359</color>
+            <color name="transparent">#00000000</color>
+            <color name="red_400">#EF5350</color>
+            <color name="red_300">#E57373</color>
+            <color name="blue_300">#64B5F6</color>
+            <color name="blue_400">#42A5F5</color>
+        </config-file> 
+         <source-file src="src/android/activity_id_card.xml" target-dir="res/layout" />
+         <source-file src="src/android/sid_activity_selfie.xml" target-dir="res/layout" />
+        <source-file src="src/android/SmileIDIonic.java" target-dir="src/cordova/plugin/smileid"/>
+        <source-file src="src/android/SIDStringExtras.java" target-dir="src/cordova/plugin/smileid"/>
+        <source-file src="src/android/SIDSelfieActivity.java" target-dir="src/cordova/plugin/smileid"/>
+        <source-file src="src/android/SIDIDCardActivity.java" target-dir="src/cordova/plugin/smileid"/>
+
+        <source-file src="src/android/arm64-v8a/libopencv_coresid.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+        <source-file src="src/android/arm64-v8a/libopencv_imgprocsid.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+        <source-file src="src/android/arm64-v8a/libsid-vision-lib.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+        <source-file src="src/android/armeabi-v7a/libopencv_coresid.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+        <source-file src="src/android/armeabi-v7a/libopencv_imgprocsid.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+        <source-file src="src/android/armeabi-v7a/libsid-vision-lib.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+        <source-file src="src/android/x86/libopencv_coresid.so" target-dir="app/src/main/jniLibs/x86" />
+        <source-file src="src/android/x86/libopencv_imgprocsid.so" target-dir="app/src/main/jniLibs/x86" />
+        <source-file src="src/android/x86/libsid-vision-lib.so" target-dir="app/src/main/jniLibs/x86" />
+        <source-file src="src/android/x86_64/libopencv_coresid.so" target-dir="app/src/main/jniLibs/x86_64" />
+        <source-file src="src/android/x86_64/libopencv_imgprocsid.so" target-dir="app/src/main/jniLibs/x86_64" />
+        <source-file src="src/android/x86_64/libsid-vision-lib.so" target-dir="app/src/main/jniLibs/x86_64" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SmileIDIonic">
+                <param name="ios-package" value="SmileIDIonic"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/SmileIDIonic.m"/>
+    </platform>
+</plugin>
