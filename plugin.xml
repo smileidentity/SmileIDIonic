@@ -93,6 +93,13 @@
                 <param name="ios-package" value="SmileIDIonic"/>
             </feature>
         </config-file>
-        <source-file src="src/ios/SmileIDIonic.m"/>
+        <source-file src="src/ios/SmileIDIonic.swift"/>
+        <source-file src="src/ios/SIDSelfieViewController.swift"/>
+        <source-file src="src/ios/SIDSelfieViewController.xib"/>
+        <source-file src="src/ios/IDCardViewController.swift"/>
+        <source-file src="src/ios/IDCardViewController.xib"/>
+        <source-file src="src/ios/SelfieViewControllerDelegate.swift"/>
+        <source-file src="src/ios/IDCardViewControllerDelegate.swift"/>
+        
     </platform>
 </plugin>
